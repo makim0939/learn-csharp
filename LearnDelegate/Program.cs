@@ -4,9 +4,10 @@
     {
         static void Main(string[] args)
         {
-            //TryDelegate.Run();
-            DeclareDelegate.Run();
-            //MultiCastDelegate.Run();
+            // TryDelegate.Run();
+            // DeclareDelegate.Run();
+            // MultiCastDelegate.Run();
+            ActionAndFunc.Run();
         }
     }
 }
