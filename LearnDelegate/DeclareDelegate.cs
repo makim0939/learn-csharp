@@ -12,19 +12,19 @@ namespace LearnDelegate
         public static void Run()
         {
             // メソッドグループでデリゲートインスタンスを作成する。
-            var notifyMethod = NotifyMethod;
+            var notifyMethod = new Notify(NotifyMethod);
 
             // ラムダ式でデリゲートインスタンスを作成する。
             var notifyLamda = (string message) => Console.WriteLine(message);
 
-            // 使うかわからないけど、newを明示してインスタンス作成、匿名関数でインスタンス作成もできる。
+            // 使うかわからないけど、匿名関数でインスタンス作成もできる。
             var notifyNew = new Notify(NotifyMethod);
             var notifyAnonymous = delegate (string message) { Console.WriteLine(message);};
         }
 
-        public static void NotifyMethod(string message)
+        public static void NotifyMethod(string a)
         {
-            Console.WriteLine(message);
+            Console.WriteLine(a);
         }
     }
 }

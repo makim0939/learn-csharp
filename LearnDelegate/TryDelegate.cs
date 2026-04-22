@@ -7,17 +7,22 @@ namespace LearnDelegate
 
         // デリゲートの定義。
         // クラスのメンバとして、もしくはクラスの外で定義できる。
-        // 引数と戻り値の型が一致するメソッドを登録できる。
-        public delegate int PerformCalculation(int x, int y);
+        // 戻り値、引数の型と個数が一致するメソッドを登録できる。
+        // refパラメータを使って結果を参照で返す例
+        public delegate void PerformCalculation(ref int result, int x, int y);
 
         public static void Run()
         {
             // 定義したデリゲートを型として、メソッドを変数に入れて扱える。
-            var add = new PerformCalculation((int x, int y) => x + y);
-            var sub = new PerformCalculation((int x, int y) => x - y);
+            var add = new PerformCalculation((ref int result, int x, int y) => result = x + y);
+            var sub = new PerformCalculation((ref int result, int x, int y) => result = x - y);
 
-            Console.WriteLine(add(1, 2)); // 3
-            Console.WriteLine(sub(1, 2)); // -1
+            int result = 0;
+            add(ref result, 1, 2);
+            Console.WriteLine(result); // 3
+
+            sub(ref result, 1, 2);
+            Console.WriteLine(result); // -1
         }
     }
 }
